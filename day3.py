@@ -96,3 +96,24 @@ while True:
             print('Podana liczba jest za duza')
         elif guessNr<r:
             print('Podana liczba jest za mala')
+
+#zad.7 Collatz problem - console app
+def collatz(liczba):
+    print(liczba)
+    while liczba!=1:
+        if liczba%2==0:
+            liczba=liczba//2
+            print(liczba)
+        elif liczba%2==1:
+            liczba=3*liczba+1
+            print(liczba)
+#przykłady wywołania funkcji collatz
+collatz(7)
+collatz(3)
+collatz(9)
+collatz(8)
+try:
+    odp=input('podaj liczbe, która ma przejść problem Collatza: ')
+    collatz(odp)
+except:
+    print('Podano nieprawidłową wartość!')
