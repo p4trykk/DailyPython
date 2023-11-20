@@ -52,3 +52,56 @@ while True:
             idx+=1
     elif int(odp)==4:
         break
+
+#zad3: christmas tree generator
+print('Podaj długość choinki: ')
+l=input()
+choinka='*'
+for i in range(int(l)):
+    print(choinka)
+    choinka=choinka+'*'
+
+#zad4: define function that sumarize all elements in list
+def sumarize(lista_do_sumowania):
+    wynik=0
+    for i in lista_do_sumowania:
+        wynik=wynik+i
+    print('Wynik to: ', wynik)
+
+sumarize([1,2,3])
+sumarize([10,5,33])
+
+#zad5: define function to auto progessive sumarize using formula
+t=[2,4,6]
+t2=[1,3,6,9,123]
+def progressive_sumarize(input_list):
+    xn=0
+    yn=1
+    for i in input_list:
+        xn=xn+yn*i
+        print('Wynik dla '+ str(yn) + ' obrotu pętli to: '+ str(xn))
+        yn+=1
+
+progressive_sumarize(t)
+progressive_sumarize(t2)
+
+#zad6: 
+def sequence_list(dist):
+    for i in range(dist+1):
+        for x in range(i):
+            print(str(i) + ' ' + str(x))
+
+sequence_list(5)
+
+
+#zad7: clock that counting to 'end_time' with 15 minutes gap 
+def clock(end_time):
+    for i in range(end_time):
+        minutes=0
+        for j in range(4):
+            if j==0:
+                print(str(i)+' : '+str(minutes)+'0')
+            else:
+                print(str(i)+' : '+str(minutes))
+            minutes+=15
+clock(4)
