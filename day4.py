@@ -20,6 +20,22 @@ print(lista4) #[1, 2, 3, 'water', 'kompot', 'cola', 'milk']
 print([1, 2, 3]*3) #[1, 2, 3, 1, 2, 3, 1, 2, 3]
 del lista4[2:]
 print(lista4) #[1, 2]
+print(lista4.index(2)) #1
+lista5=['cat', 'hamster', 'dog', 'snake']
+lista5.append('bear')
+print(lista5) # ['cat', 'hamster', 'dog', 'snake', 'bear']
+lista5.insert(0,'fish')
+print(lista5) #['fish', 'cat', 'hamster', 'dog', 'snake', 'bear']
+lista5.remove('snake')
+print(lista5) #['fish', 'cat', 'hamster', 'dog', 'bear']
+lista6=['Tomasz','Michał', 'Maja', 'Michał']
+lista6.remove('Michał')
+print(lista6) #['Tomasz', 'Maja', 'Michał']
+lista6.sort()
+print(lista6) #['Maja', 'Michał', 'Tomasz']
+lista7=['a','D','A', 'c', 'AAA', 'C','aa']
+lista7.sort(key=str.lower, reverse=True)
+print(lista7) #['D', 'c', 'C', 'AAA', 'aa', 'a', 'A']
 
 #zad.2 Console Program using List
 shopList=[]
@@ -105,3 +121,12 @@ def clock(end_time):
                 print(str(i)+' : '+str(minutes))
             minutes+=15
 clock(4)
+
+#zad.8: Random sentense  generator with list
+import random
+def random_sentense():
+    sentense=['zdrowia!', 'Trzymaj się!', 'Powodzenia!', 'Bedzie git', 'Na zdrowie', 'Szerokiej drogi', 'XD']
+    draft=random.randint(0,len(sentense)-1)
+    print('Twoja sentencja to: ', sentense[draft])
+
+random_sentense()
