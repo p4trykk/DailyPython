@@ -1,4 +1,4 @@
-#Dictionary (słownik)
+Dictionary (słownik)
 
 myDoggo={'name':'Ventuś', 'color':'white', 'size':'small'}
 print(myDoggo['color']) # white
@@ -84,7 +84,8 @@ def birthdayCalendar():
 
 birthdayCalendar()
 
-#zad.2 letters counter in string app using dictionary
+#zad.2 letters counter in string app using dictionary + use pprint
+import pprint
 def letterCounter(doZliczenia):
     counter={}
     doZliczenia=doZliczenia.lower()
@@ -95,6 +96,40 @@ def letterCounter(doZliczenia):
             counter.setdefault(i, 0)
             counter[i]=counter[i]+1
     counter=sorted(counter.items(), key=lambda x: x[1], reverse=True) #sortowanie od tych liter co wystapiły najcześciej
-    print(dict(counter))
+    pprint.pprint(dict(counter))
 
 letterCounter('Żaba puka ci do brzucha i żuchwa')
+
+#zad.3 tic tac toe
+
+def gameplay():
+    turn='X'
+    board={'1':' ', '2':' ', '3':' ',
+        '4':' ', '5':' ', '6':' ',
+        '7':' ', '8':' ', '9':' ',}
+    
+    def showBoard(board):
+        print(board['1']+' | '+board['2']+' | '+board['3'])
+        print('---------')
+        print(board['4']+' | '+board['5']+' | '+board['6'])
+        print('---------')
+        print(board['7']+' | '+board['8']+' | '+board['9'])
+    showBoard(board)
+    for i in range(9):    
+        print(' 1 top-left \n 2 top-middle \n 3 top-right \n 4 middle-left \n 5 middle-middle \n 6 middle-right \n 7 down-left \n 8 down-middle \n 9 down-right')
+        print('Postaw '+turn+' na planszy wybierając pozycję (1-9)')
+        move=input()
+        board[move]=turn
+        showBoard(board)
+
+        if board['1']==board['2']==board['3']==turn or board['4']==board['5']==board['6']==turn or board['7']==board['8']==board['9']==turn or board['1']==board['5']==board['9']==turn or board['3']==board['5']==board['7']==turn or board['1']==board['4']==board['7']==turn or board['2']==board['5']==board['8']==turn or board['3']==board['6']==board['9']==turn:
+            print('Gracz '+turn+' wygrał grę! Gratulacje!')
+            break
+
+        if turn=='X':
+            turn='O'
+        else:
+            turn='X'
+        
+
+gameplay()
