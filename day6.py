@@ -95,7 +95,7 @@ def letterCounter(doZliczenia):
         else:
             counter.setdefault(i, 0)
             counter[i]=counter[i]+1
-    counter=sorted(counter.items(), key=lambda x: x[1], reverse=True) #sortowanie od tych liter co wystapiły najcześciej
+    counter=sorted(counter.items(), key=lambda x: x[1], reverse=True) #sortowanie od tych liter co wystapiły najcześciej (1=values, 0=keys in lambda func)
     pprint.pprint(dict(counter))
 
 letterCounter('Żaba puka ci do brzucha i żuchwa')
