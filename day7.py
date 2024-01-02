@@ -33,3 +33,26 @@ mean['English']=mean['English']/len(studentsGrades.keys())
 mean['Physics']=mean['Physics']/len(studentsGrades.keys())
 
 pprint.pprint(sorted(mean.items(), reverse=True, key=lambda x:x[1]))
+
+#zad.3
+animals= {'Dog': {'Name':'Reksio', 'Age': '5', 'breed': 'Border Coolie'},
+          'Cat1': {'Name':'Lewus', 'Age': '1', 'breed': 'Burmese'},
+          'Cat2': {'Name':'Donek', 'Age': '3', 'breed': 'Egyptian'}}
+
+suma=0
+for x, y in animals.items():
+    suma=suma+int(y['Age'])
+print(suma)
+
+animals.update({'Cat3': {'Name':'Puszek', 'Age': '8', 'breed': 'British'}})
+pprint.pprint(animals)
+animals.update({'Cat1': {'Name':'Klebuszek', 'Age': '1', 'breed': 'Burmese'}})
+pprint.pprint(animals)
+animals.pop('Cat3')
+pprint.pprint(animals)
+wynik=0
+for x,y in animals.items():
+    age=int(y['Age'])
+    if wynik<age:
+        wynik=age
+print('Najstarsze zwierze ma tyle lat: '+str(wynik))
