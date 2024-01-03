@@ -1,4 +1,4 @@
-Dictionary (słownik)
+#Dictionary (słownik)
 
 myDoggo={'name':'Ventuś', 'color':'white', 'size':'small'}
 print(myDoggo['color']) # white
