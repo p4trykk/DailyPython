@@ -51,3 +51,19 @@ print(text6.split('-'))
 print(text6.rjust(50)) #50 is overall string length 
 print(text6.ljust(50,'$'))
 print(text6.center(50, '_'))
+
+def DeluxePrintForDictionary(dic):
+    for x,y in dic.items():
+        print(str(x).ljust(15)+str(y).rjust(50,'.'))
+
+itemList={'Wood': 120, 'Plastic bootle': 320, 'Glass bottle': 45, 'Polyester': 3}
+DeluxePrintForDictionary(itemList)
+
+text7='     O\'Hara has new car, wow   '
+print(text7.strip())
+text8='xxxxxxxKozakoooooooo'
+print(text8.strip('kxo')) #remove this arguments in the edges
+
+import pyperclip
+pyperclip.copy('123456789')
+print(pyperclip.paste())
