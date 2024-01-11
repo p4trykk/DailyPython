@@ -74,3 +74,50 @@ krzyzowka2=re.compile(r'(ka)*du') # * wielokrotne powtarzanie wyrażenia w nawia
 text3='flugiptyuuggkakakaniszikakadusup'
 check12=krzyzowka2.search(text3)
 print(check12.group()) #kakadu
+krzyzowka3=re.compile(r'(ka)+du') #min. 1 wystąpienie wartości w ()
+check13=krzyzowka3.search(text3)
+print(check13.group()) #kakadu
+text4='dadadu'
+check14=krzyzowka3.search(text4)
+print(check14==None) #true
+haha1=re.compile(r'(Ha){3}') #dopasuj dokładnie 3 Ha, czyli: HaHaHa
+text5='HaHaHaHaHaHaHa'
+check15=haha1.search(text5)
+print(check15.group()) #HaHaHa
+haha2=re.compile(r'(Ha){3,}') #dopasuj 3 lub wiecej
+check16=haha2.search(text5)
+print(check16.group()) #HaHaHaHaHaHaHa - dopasowuje domyślnie najdłuższy możliwy ciąg
+haha3=re.compile(r'(Ha){3,}?') #dopasowuje najkrótszy możliwy ciąg tekstowy
+check17=haha3.search(text5)
+print(check17.group()) #HaHaHa
+haha4=re.compile(r'(Ha){,4}') #dopasuj do 4 razy zawartość () jednoznaczne do: ((Ha)|(Ha)(Ha)|(Ha)(Ha)(Ha)|(Ha)(Ha)(Ha)(Ha))
+check18=haha4.search(text5)
+print(check18.group()) #HaHaHaHa
+
+#group VS findall
+phoneNumRegex1 = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex1.search('Tel. kom.: 415-555-9999, praca: 212-555-0000')
+print(mo.group()) #group() zwraca pierwsze wystąpienie obiektu Match
+mo2=phoneNumRegex1.findall('Tel. kom.: 415-555-9999, praca: 212-555-0000')
+print(mo2) #findall() zwraca wszystkie możliwe wystąpienia w postaci listy: ['415-555-9999', '212-555-0000']
+phoneNumRegex2 = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')
+mo3=phoneNumRegex2.findall('Tel. kom.: 415-555-9999, praca: 212-555-0000')
+print(mo3) #jezeli w wyr. reg. są grupy to findall() zwróci listę krotek: [('415', '555', '9999'), ('212', '555', '0000')]
+
+#Signatures classes
+# \d - cyfra 0-9
+# \D - dowolny znak bez cyfr 0-9
+# \w - dowolna litera, cyfra, znak podkreslenia
+# \W - wszystko oprócz litery, cyfry lub podkreślenia
+# \s - spacja, tabulator, nowa linia (białe znaki)
+# \S - wszystko oprócz białych znaków
+
+mix1=re.compile(r'\d\w\s')
+check19=mix1.search('11 w2 3d gg  .c')
+print(check19.group()) #11 -> pierwsze wystąpienie
+check20=mix1.findall('11 w2 3d gg  .c')
+print(check20) #['11 ', '3d ']
+mix2=re.compile(r'\d+\s\w+') #dopasować dowolna ilość cyfr, spacja i dowolna ilość znakow
+check21=mix2.findall('12 jabłek, twoja kapucynka, 1 talerzyk, g r z i b')
+print(check21) #['12 jabłek', '1 talerzyk']
+
