@@ -121,3 +121,42 @@ mix2=re.compile(r'\d+\s\w+') #dopasować dowolna ilość cyfr, spacja i dowolna 
 check21=mix2.findall('12 jabłek, twoja kapucynka, 1 talerzyk, g r z i b')
 print(check21) #['12 jabłek', '1 talerzyk']
 
+myOwnRegex=re.compile(r'[AaBbCc]') #własna klasa znaków
+check22=myOwnRegex.findall('Wiewiórka zajada się pokarmem dla rybek. Ale SZOK!')
+print(check22) #['a', 'a', 'a', 'a', 'a', 'a', 'b', 'A']
+myOwnRegex2=re.compile(r'[a-z]') #dopasowanie tylko małych liter
+check23=myOwnRegex2.findall('WODA TO WODA, TEGO NIE ZMIENISZ. elo')
+print(check23) #['e', 'l', 'o']
+myOwnRegex3=re.compile(r'[^a-z ,.]') #dopasowanie wszystkich znaków bez małych liter (a-z), spacji, przecinka i kropki
+check24=myOwnRegex3.findall('jedziesz za szybko. Zwolnij!')
+print(check24) #['Z', '!']
+myOwnRegex4=re.compile(r'^Witam.*Żegnam$') #znajdz tekst zaczynający sie "Witam" i kończący "Żegnam" (kropka - znak wieloznaczny)
+check25=myOwnRegex4.findall('Witam, miło mi Państwa widzieć. Żegnam')
+print(check25) #['Witam, miło mi Państwa widzieć. Żegnam']
+nameRegex=re.compile(r'Imię: (.*) Nazwisko: (.*)')
+check26=nameRegex.search('Imię: Krzysztof Nazwisko: Jarzyna')
+print(check26.groups(0)) #('Krzysztof', 'Jarzyna')
+nongreedyRegex = re.compile(r'<.*?>') #tryb niezachłanny - dopasowanie min. wymagań 
+check27 = nongreedyRegex.search('<To jest obsługa> w restauracji.>')
+print(check27.group()) #<To jest obsługa>
+greedyRegex = re.compile(r'<.*>') #tryb zachłanny - dopasowanie max. wymagań
+check28 = greedyRegex.search('<To jest obsługa> w restauracji.>')
+print(check28.group()) #<To jest obsługa> w restauracji.>
+newRegexAgain=re.compile(r'.*')
+check29=newRegexAgain.search('Ale jazda\ntego już nie znajdzie HE He\na tego to tym bardziej :D')
+print(check29.group()) #Ale jazda  >> nie znajduje po nowej linii
+newRegexAgainUpdate=re.compile(r'.*', re.DOTALL) #re.DOTALL - umozliwia pokonanie nowych linii
+check30=newRegexAgainUpdate.search('Ale jazda\ntego już nie znajdzie HE He\na tego to tym bardziej :D')
+print(check30.group()) #Ale jazda
+#tego już nie znajdzie HE He
+#a tego to tym bardziej :D
+whosKnowTheSize=re.compile(r'(robocop)', re.IGNORECASE) #IGNORECASE - nie zwraca uwagi na wielkość znaków
+check31=whosKnowTheSize.findall('RoBOcOp roboCOP')
+print(check31) #['RoBOcOp', 'roboCOP']
+
+regexSwap=re.compile(r'Adam \w+')
+swap=regexSwap.sub('#####', 'Adam Nowak, możesz być spokojny, pozostaniesz incognito')
+print(swap) # #####, możesz być spokojny, pozostaniesz incognito
+regexSwap2=re.compile(r'Agencie (\w)\w*')
+swap2=regexSwap2.sub('Agencie \\1###', 'Agencie Nowak, możesz być spokojny, pozostaniesz incognito')
+print(swap2) # Agencie N###, możesz być spokojny, pozostaniesz incognito
