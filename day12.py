@@ -51,6 +51,10 @@ def searchPhoneNumber():
         print('Niestety nie znaleziono żadnego numeru telefonu komórkowego w podanym tekście.')
     else:
         for i in checkThat:
-            print(i)
+            if i[0]=='' or i[0]==' ':
+                phoneNumber=' '.join([i[2], i[4], i[6]])
+            else:
+                phoneNumber=' '.join([i[0], i[2], i[4], i[6]])
+            print(phoneNumber)
 
 searchPhoneNumber()
