@@ -22,3 +22,37 @@ print(os.path.split(path)) # rozbija sciezke tworząc krotke z 2 elementami: sci
 krotka=(os.path.dirname(path), os.path.basename(path)) #to samo co poprzedni przykład
 print(krotka==os.path.split(path)) #true
 print(path.split(os.path.sep)) #wyodrębnia każdy z katalogów do listy: ['C:', 'Users', 'ASUS', 'Desktop', 'DANE 03', 'segregator', 'programowanie', 'tekst.txt']
+
+path2='C:\\Users\\ASUS\\Desktop\\DANE 03\\segregator\\programowanie\\pythonProject\\data science Python\\zadania\\DailyPython'
+totalsize=0
+for file in os.listdir(path2):
+    print('Rozmiar pliku '+file+': '+ str(os.path.getsize(os.path.join(path2, file))))
+    totalsize+=os.path.getsize(os.path.join(path2, file))
+print('Rozmiar całego katalogu: '+str(totalsize))
+
+file=open(os.path.join(path2, 'day1.py'))
+odczyt=file.read()
+print(odczyt)
+
+path3='C:\\Users\\ASUS\\Desktop\\DANE 03\\segregator\\programowanie\\pythonProject\\data science Python'
+file2=open(os.path.join(path3, 'panTadeusz.txt'))
+odczyt2=file2.readlines() #zapis pliku tekstowego w formie listy, nowy element po nowej linii
+print(odczyt2)
+
+nowyPlik=open(os.path.join(path3, 'powitanie.txt'), 'w') #tryb zapisu
+txt=nowyPlik.write('Witam')
+print(txt) #5 = długość stringa
+nowyPlik.close()
+nowyPlik=open(os.path.join(path3, 'powitanie.txt'))
+print(nowyPlik.read()) #Witam
+nowyPlik=open(os.path.join(path3, 'powitanie.txt'), 'a') #tryb dołączania (nie usuwa aktualnych zmian)
+txt=nowyPlik.write('Żegnam') #6 = długość dodanego stringa
+print(txt)
+nowyPlik.close()
+nowyPlik=open(os.path.join(path3, 'powitanie.txt'))
+print(nowyPlik.read()) #WitamŻegnam
+nowyPlik=open(os.path.join(path3, 'powitanie.txt'), 'w') #tryb zapisu usunie poprzednie zmiany
+txt=nowyPlik.write('Elo elo 3 2 0')
+nowyPlik.close()
+nowyPlik=open(os.path.join(path3, 'powitanie.txt'))
+print(nowyPlik.read()) 
