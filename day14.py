@@ -51,8 +51,8 @@ print(txt)
 nowyPlik.close()
 nowyPlik=open(os.path.join(path3, 'powitanie.txt'))
 print(nowyPlik.read()) #WitamŻegnam
-nowyPlik=open(os.path.join(path3, 'powitanie.txt'), 'w') #tryb zapisu usunie poprzednie zmiany
+nowyPlik=open(os.path.join(path3, 'powitanie.txt'), 'w') #tryb zapisu usunie poprzednie zmiany (nie bedzie już WitamŻegnam)
 txt=nowyPlik.write('Elo elo 3 2 0')
 nowyPlik.close()
 nowyPlik=open(os.path.join(path3, 'powitanie.txt'))
-print(nowyPlik.read()) 
+print(nowyPlik.read()) #Elo elo 3 2 0
