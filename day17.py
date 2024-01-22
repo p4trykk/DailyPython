@@ -27,3 +27,4 @@ for folder, subfolders, files in os.walk(path4):
     for file in files:
         print('Plik katalogu '+folder+' '+file)
     print('')
+
