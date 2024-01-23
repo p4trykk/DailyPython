@@ -1,4 +1,4 @@
-#project
+#project 1
 import re, os
 
 path='C:\\Users\\ASUS\\Desktop\\DANE 03\\segregator\\programowanie\\pythonProject\\data science Python\\exercises\\day18_data'
@@ -26,5 +26,12 @@ for x,y,files in os.walk(path): #zwraca kolejno listy: katalogów, podkatalogów
             f.write(txt)  #zapis pliku              
 
 
-
+#project 2
+print()
+path2='C:\\Users\\ASUS\\Desktop\\DANE 03\\segregator\\programowanie\\pythonProject\\data science Python\\zadania'
+for folders, subfolders, files in os.walk(path2):
+    for file in files:
+        size=os.path.getsize(os.path.join(folders,file))
+        if size>=2000:
+            print(file+': '+str(size))
 
