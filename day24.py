@@ -1,5 +1,5 @@
 #Arkusze kalkulacyjne
-import openpyxl, os
+import openpyxl, os, pprint
 
 path='C:\\Users\\ASUS\\Desktop\\DANE 03\\segregator\\programowanie\\pythonProject\\data science Python'
 os.getcwd() #ustawienie katalogu roboczego
@@ -31,3 +31,23 @@ for Rowcell in dataSheet2['A1':'C3']:
 # for cell in dataSheet2.columns[1]:
 #     print(cell.value)
 
+#projekt: odczyt z arkusza danych i zapis w .py file
+print('Otwieranie skoroszytu...')
+wb=openpyxl.load_workbook(os.path.join(path, 'dataUnitedStates.xlsx'))
+sheet=wb.get_sheet_by_name('USAdata')
+countryData={}
+print('Odczyt wierszy...')
+for row in range(2, sheet.max_row+1):
+    state=sheet['B'+str(row)].value
+    country=sheet['C'+str(row)].value
+    pop=sheet['D'+str(row)].value
+    countryData.setdefault(state,{})
+    countryData[state].setdefault(country, {'tract': 0, 'pop': 0})
+    countryData[state][country]['tract']+=1
+    countryData[state][country]['pop']+=int(pop)
+
+print('Zapisywanie wyników...')
+resultFile=open(os.path.join(path,'wynikiUSA.py'), 'w')
+resultFile.write('allData='+pprint.pformat(countryData))
+resultFile.close()
+print('Gotowe!')
